@@ -1,4 +1,4 @@
-package com.br.testedisys.exception;
+package com.testedisys.exception;
 
 import javax.persistence.EntityNotFoundException;
 

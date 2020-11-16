@@ -1,7 +1,8 @@
-package com.br.testedisys.controller;
+package com.testedisys.controller;
 
-import com.br.testedisys.model.Departamento;
-import com.br.testedisys.serviceImpl.DepartamentoServiceImpl;
+import com.testedisys.model.Departamento;
+import com.testedisys.model.Funcionario;
+import com.testedisys.serviceImpl.DepartamentoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/departamento")
@@ -35,6 +37,11 @@ public class DepartamentoController implements Serializable {
     @GetMapping("/departamentos")
     public List<Departamento> departamentos(){
         return departamentoService.departamentoList();
+    }
+
+    @GetMapping("/fucionariosPorDepartamento/{id}")
+    public List<Funcionario> funcionariosByDepartamento(@PathVariable int id){
+        return departamentoService.findDepartamentoById(id).getFuncionarios().stream().collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")

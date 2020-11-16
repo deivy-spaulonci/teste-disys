@@ -1,10 +1,10 @@
-package com.br.testedisys.serviceImpl;
+package com.testedisys.serviceImpl;
 
-import com.br.testedisys.exception.IdNotFound;
-import com.br.testedisys.model.Cargo;
-import com.br.testedisys.model.Funcionario;
-import com.br.testedisys.repository.FuncionarioRepository;
-import com.br.testedisys.service.FuncionarioService;
+import com.testedisys.exception.IdNotFound;
+import com.testedisys.model.Cargo;
+import com.testedisys.model.Funcionario;
+import com.testedisys.repository.FuncionarioRepository;
+import com.testedisys.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,7 +1,7 @@
-package com.br.testedisys.controller;
+package com.testedisys.controller;
 
-import com.br.testedisys.model.Cargo;
-import com.br.testedisys.serviceImpl.CargoServiceImpl;
+import com.testedisys.model.Cargo;
+import com.testedisys.serviceImpl.CargoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Entity;
 import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;

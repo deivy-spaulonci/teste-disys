@@ -1,4 +1,7 @@
-package com.br.testedisys.model;
+package com.testedisys.model;
+
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -8,6 +11,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
 
+@Audited
+@AuditTable(value="funcionario_aud")
 @Entity
 @Table(name = "FUNCIONARIO")
 public class Funcionario implements Serializable {
@@ -23,7 +28,6 @@ public class Funcionario implements Serializable {
     private String funcionario_name;
 
     @NotNull(message = "Data de nascimento do funcionário não pode ser nulo")
-    @NotEmpty(message = "Data de nascimento não pode estar vazio")
     @Column(nullable = false)
     private LocalDate funcionario_birthday;
 
@@ -36,6 +40,12 @@ public class Funcionario implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "CARGO_ID")
     private Cargo cargo;
+
+    @Column(name = "CHEFE_DEPARTAMENTO", columnDefinition = "BOOLEAN DEFAULT false")
+    private Boolean chefeDepartamento;
+
+    @ManyToOne (cascade=CascadeType.ALL)
+    private Departamento departamento;
 
     public int getFuncionario_id() {
         return funcionario_id;
@@ -77,9 +87,23 @@ public class Funcionario implements Serializable {
         this.cargo = cargo;
     }
 
+    public Departamento getDepartamento() { return departamento; }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public Boolean getChefeDepartamento() {
+        return chefeDepartamento;
+    }
+
+    public void setChefeDepartamento(Boolean chefeDepartamento) {
+        this.chefeDepartamento = chefeDepartamento;
+    }
+
     @Transient
     public int getAge(){
-        return Period.between( getFuncionario_birthday(), LocalDate.now()).getDays();
+        return Period.between(getFuncionario_birthday(), LocalDate.now()).getYears();
     }
 
     @Override

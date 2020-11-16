@@ -1,4 +1,7 @@
-package com.br.testedisys.model;
+package com.testedisys.model;
+
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -7,6 +10,8 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
+@Audited
+@AuditTable(value="departamento_aud")
 @Entity
 @Table(name = "DEPARTAMENTO")
 public class Departamento implements Serializable {
@@ -21,7 +26,7 @@ public class Departamento implements Serializable {
     @Column(length = 50, nullable = false)
     private String departamento_name;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name="FUNCIONARIO_DEPARTAMENTO",
             joinColumns=@JoinColumn(name="departamento_id"),
             inverseJoinColumns=@JoinColumn(name="funcionario_id"))

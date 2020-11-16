@@ -1,9 +1,7 @@
-package com.br.testedisys.controller;
+package com.testedisys.controller;
 
-import com.br.testedisys.model.Departamento;
-import com.br.testedisys.model.Funcionario;
-import com.br.testedisys.serviceImpl.DepartamentoServiceImpl;
-import com.br.testedisys.serviceImpl.FuncionarioServiceImpl;
+import com.testedisys.model.Funcionario;
+import com.testedisys.serviceImpl.FuncionarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -54,5 +52,11 @@ public class FuncionarioController implements Serializable {
     public ResponseEntity<Funcionario> update(@Valid @RequestBody Funcionario funcionario){
         this.funcionarioService.save(funcionario);
         return new ResponseEntity<>(funcionario, HttpStatus.GONE);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id){
+        this.funcionarioService.findFuncionarioById(id);
+        this.funcionarioService.excluirFuncionario(id);
     }
 }

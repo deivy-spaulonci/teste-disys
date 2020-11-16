@@ -1,7 +1,6 @@
-package com.br.testedisys.service;
+package com.testedisys.service;
 
-import com.br.testedisys.model.Departamento;
-import com.br.testedisys.model.Funcionario;
+import com.testedisys.model.Departamento;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

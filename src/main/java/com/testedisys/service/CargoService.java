@@ -1,6 +1,6 @@
-package com.br.testedisys.service;
+package com.testedisys.service;
 
-import com.br.testedisys.model.Cargo;
+import com.testedisys.model.Cargo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

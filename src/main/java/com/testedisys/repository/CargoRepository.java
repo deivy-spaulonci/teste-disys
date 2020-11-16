@@ -1,6 +1,6 @@
-package com.br.testedisys.repository;
+package com.testedisys.repository;
 
-import com.br.testedisys.model.Cargo;
+import com.testedisys.model.Cargo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
